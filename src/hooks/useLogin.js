@@ -9,7 +9,7 @@ export const useLogin = () => {
     const login = async (email,password) => {
         setIsLoading(true);
         setError(null);
-        const resp = await fetch('/api/users/login',{method:"POST",headers:{'Content-Type':"application/json"},body:JSON.stringify({email,password})});
+        const resp = await fetch('https://workout-tracker-backend-d4q0.onrender.com/api/users/login',{method:"POST",headers:{'Content-Type':"application/json"},body:JSON.stringify({email,password})});
         const json = await resp.json();
         if (!resp.ok) {
             setIsLoading(false);

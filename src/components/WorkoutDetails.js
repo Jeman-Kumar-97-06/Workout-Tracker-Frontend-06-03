@@ -8,7 +8,7 @@ const WorkoutDetails = ({wrkt}) => {
         if (!user) {
             return;
         }
-        const response = await fetch('/api/workouts/'+wrkt._id,{method:"DELETE",headers:{'Authorization':`Beared ${user.token}`}});
+        const response = await fetch('https://workout-tracker-backend-d4q0.onrender.com/api/workouts/'+wrkt._id,{method:"DELETE",headers:{'Authorization':`Beared ${user.token}`}});
         const json     = await response.json();
         if(response.ok){
             dispatch({type:"DELETE_WORKOUT",payload:json})

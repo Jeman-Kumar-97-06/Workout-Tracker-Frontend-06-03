@@ -12,7 +12,7 @@ const Home = () => {
     // "proxy":"http://localhost:4000",
     useEffect(()=>{
         const fetchWorkouts = async () => {
-            const resp = await fetch('/api/workouts/',{headers:{'Authorization':`Beared ${user.token}`}});
+            const resp = await fetch('https://workout-tracker-backend-d4q0.onrender.com/api/workouts/',{headers:{'Authorization':`Beared ${user.token}`}});
             const json = await resp.json();
             console.log(json);
             if (resp.ok){
@@ -27,6 +27,7 @@ const Home = () => {
     return (
         <div className="home">
             <div className="workouts">
+                {!workouts && <div>Please wait. The server response is slow.😿</div>}
                 {workouts && workouts.map((w)=>(
                     <WorkoutDetails key={w._id} wrkt={w}/>
                 ))}
